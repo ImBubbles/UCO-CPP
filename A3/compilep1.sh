@@ -1,0 +1,18 @@
+g++ \
+	a3p1.cpp \
+	logger/Log.cpp \
+	logger/Log.h \
+	logger/LogLevel.h \
+	logger/loggers/Logger.h \
+	logger/loggers/CLogger.h \
+	logger/loggers/FLogger.h \
+	input/InputWrapper.h \
+	input/InputWrapper.cpp \
+	input/InputMenu.h \
+	input/InputMenu.cpp \
+	util/UtilString.h \
+	util/UtilString.cpp \
+	util/UtilNumber.h \
+	util/UtilNumber.cpp \
+	util/Testable.h \
+	-o outputp1
