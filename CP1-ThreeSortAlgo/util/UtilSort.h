@@ -1,0 +1,66 @@
+#pragma once
+#include <functional>
+
+namespace UtilSort {
+    template <typename T>
+    void insertionSort(T* arr, const int size, const std::function<bool(T& key, T& prev)>& conditonal) {
+        for(int i = 1; i < size; i++) {
+        T key = arr[i];
+        int j = i - 1;
+        while(j >=0 && conditonal(arr[j], key)) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+        }
+    }
+    template <typename T>
+    void selectionSort(T* arr, const int size, const std::function<bool(T& key, T& against)> conditional) {
+        for(int i = 0; i < size -1; i++) {
+            T swapPos = i;
+            for(int j = i + 1; j < size; j++) {
+                if(conditional(arr[j], arr[swapPos])) {
+                    swapPos = j;
+                }
+            }
+            if(swapPos != i) {
+                T temp = arr[i];
+                arr[i] = arr[swapPos];
+                arr[swapPos] = temp;
+            }
+        }
+    }
+};
+
+namespace PreparedSort {
+
+    /*
+    ltg = least to greatest
+    gtl = greatest to least
+    */
+
+    template <typename T>
+    void ltgInsertionSort(T* arr, const int size) {
+        return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
+            return prev > key;
+        }));
+    }
+    template <typename T>
+    void gtlInsertionSort(T* arr, const int size) {
+        return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
+            return prev < key;
+        }));
+    }
+    template <typename T>
+    void ltgSelectionSort(T* arr, const int size) {
+        return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
+            return key < against;
+        }));
+    }
+    template <typename T>
+    void gtlSelectionSort(T* arr, const int size) {
+        return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
+            return key > against;
+        }));
+    }
+}
