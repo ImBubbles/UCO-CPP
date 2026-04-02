@@ -6,9 +6,9 @@
 
 int main() {
 
-    Log::LOG_FILTER = -1;
+    //Log::LOG_FILTER = -1;
     Log::defaultLogger();
-    //Log::debug("Debug messages are enabled");
+    Log::debug("Debug messages are enabled");
 
     const int size = 5;
     int arr[size] = {5, 2, 9, 1, 6};
