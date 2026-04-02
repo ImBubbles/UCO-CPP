@@ -21,7 +21,7 @@
  * @return void
  */
 void generateTosses(int* arr, int n) {
-    for(int i = 0; i < 20; i++) { // Fill array with 'dice' rolls
+    for(int i = 0; i < n; i++) { // Fill array with 'dice' rolls
         arr[i] = UtilNumber::randInt(1, 6);
     }
 }
