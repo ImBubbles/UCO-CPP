@@ -30,6 +30,19 @@ namespace UtilSort {
             }
         }
     }
+    template <typename T>
+    void bubbleSort(T* arr, const int size, const std::function<bool(T& current, T& next)> conditional) {
+        for(int i = 0; i < size - 1; i++) {
+            for(int j = 0; j < size - i -1; j++) {
+                //if(arr[j] > arr[j + 1]) {
+                if(conditional(arr[j], arr[j + 1])) { // Should swap current with next?
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
 };
 
 namespace PreparedSort {
@@ -42,25 +55,37 @@ namespace PreparedSort {
     template <typename T>
     void ltgInsertionSort(T* arr, const int size) {
         return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
-            return prev > key;
+            return key > prev;
         }));
     }
     template <typename T>
     void gtlInsertionSort(T* arr, const int size) {
         return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
-            return prev < key;
+            return key < prev;
         }));
     }
     template <typename T>
     void ltgSelectionSort(T* arr, const int size) {
         return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
-            return key < against;
+            return key > against;
         }));
     }
     template <typename T>
     void gtlSelectionSort(T* arr, const int size) {
         return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
-            return key > against;
+            return key < against;
+        }));
+    }
+    template <typename T>
+    void ltgBubbleSort(T* arr, const int size) {
+        return UtilSort::bubbleSort(arr, size, std::function<bool(T&, T&)>([](T& current, T& next) {
+            return next > current;
+        }));
+    }
+    template <typename T>
+    void gtlBubbleSort(T* arr, const int size) {
+        return UtilSort::bubbleSort(arr, size, std::function<bool(T&, T&)>([](T& current, T& next) {
+            return next < current;
         }));
     }
 }

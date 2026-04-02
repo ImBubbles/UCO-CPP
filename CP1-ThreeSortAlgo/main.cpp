@@ -1,33 +1,30 @@
 #include "logger/Log.h"
 #include "util/UtilString.h"
-#include "util/UtilNumber.h"
+#include "input/InputMenu.h"
 #include "util/UtilSort.h"
 #include <string>
-
-void bubbleSort(int* arr, int n) {
-    for(int i = 0; i < n - 1; i++) {
-        for(int j = 0; j < n - i -1; j++) {
-            Log::debug(UtilString::rightString(15, UtilString::arrAsToString(arr, 5), ' '));
-            if(arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
 
 int main() {
 
     Log::LOG_FILTER = -1;
     Log::defaultLogger();
-    Log::debug("Debug messages are enabled");
+    //Log::debug("Debug messages are enabled");
 
-    int arr[5] = {5, 2, 9, 1, 6};
-    //selectionSort(arr, 5);
-    //PreparedSort::ltgSelectionSort(arr, 5);
-    bubbleSort(arr, 5);
-    Log::debug(UtilString::rightString(15, UtilString::arrAsToString(arr, 5), ' '));
+    const int size = 5;
+    int arr[size] = {5, 2, 9, 1, 6};
+
+    Log::info("Array before sorting: " + UtilString::arrAsToString(arr, size));
+
+    std::string type;
+    InputMenu* inputMenu = new InputMenu("Select Sorting Type");
+    (*inputMenu)
+    .addOption("Insertion Sort", [&type, &arr, size]() { type = "Insertion"; PreparedSort::ltgInsertionSort(arr, size); })
+    .addOption("Selection Sort", [&type, &arr, size]() { type = "Selection"; PreparedSort::ltgInsertionSort(arr, size); })
+    .addOption("Bubble Sort", [&type, &arr, size]() { type = "Bubble"; PreparedSort::ltgInsertionSort(arr, size); });
+    inputMenu->prompt();
+    delete inputMenu;
+
+    Log::info("Array after sorting using " + type + " sort: " + UtilString::arrAsToString(arr, size));
 
     return 0;
     
