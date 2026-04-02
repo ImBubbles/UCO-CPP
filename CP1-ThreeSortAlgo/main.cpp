@@ -18,9 +18,9 @@ int main() {
     std::string type;
     InputMenu* inputMenu = new InputMenu("Select Sorting Type");
     (*inputMenu)
-    .addOption("Insertion Sort", [&type, &arr, size]() { type = "Insertion"; PreparedSort::ltgInsertionSort(arr, size); })
-    .addOption("Selection Sort", [&type, &arr, size]() { type = "Selection"; PreparedSort::ltgInsertionSort(arr, size); })
-    .addOption("Bubble Sort", [&type, &arr, size]() { type = "Bubble"; PreparedSort::ltgInsertionSort(arr, size); });
+    .addOption("Insertion Sort", [&type, &arr, size]() { type = "Insertion"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); })
+    .addOption("Selection Sort", [&type, &arr, size]() { type = "Selection"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); })
+    .addOption("Bubble Sort", [&type, &arr, size]() { type = "Bubble"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); });
     inputMenu->prompt();
     delete inputMenu;
 
