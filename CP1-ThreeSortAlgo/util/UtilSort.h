@@ -78,13 +78,13 @@ namespace UtilSort {
         template <typename T>
         void ltgBubbleSort(T* arr, const int size) {
             return UtilSort::bubbleSort(arr, size, std::function<bool(T&, T&)>([](T& current, T& next) {
-                return next > current;
+                return current > next;
             }));
         }
         template <typename T>
         void gtlBubbleSort(T* arr, const int size) {
             return UtilSort::bubbleSort(arr, size, std::function<bool(T&, T&)>([](T& current, T& next) {
-                return next < current;
+                return current < next;
             }));
         }
     }

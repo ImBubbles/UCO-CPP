@@ -20,7 +20,7 @@ int main() {
     (*inputMenu)
     .addOption("Insertion Sort", [&type, &arr, size]() { type = "Insertion"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); })
     .addOption("Selection Sort", [&type, &arr, size]() { type = "Selection"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); })
-    .addOption("Bubble Sort", [&type, &arr, size]() { type = "Bubble"; UtilSort::PreparedSort::ltgInsertionSort(arr, size); });
+    .addOption("Bubble Sort", [&type, &arr, size]() { type = "Bubble"; UtilSort::PreparedSort::ltgBubbleSort(arr, size); });
     inputMenu->prompt();
     delete inputMenu;
 
