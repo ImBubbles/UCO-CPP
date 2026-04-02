@@ -20,7 +20,7 @@
  * @param n size of array
  * @return void
  */
-void generateTosses(int* arr, int n) {
+void generateTosses(int* arr, const int n) {
     for(int i = 0; i < n; i++) { // Fill array with 'dice' rolls
         arr[i] = UtilNumber::randInt(1, 6);
     }
@@ -35,7 +35,7 @@ void generateTosses(int* arr, int n) {
  * @param n size of array
  * @return void
  */
-void print_with_runs(int* arr, int n) {
+void print_with_runs(int* arr, const int n) {
     // Print array by grouping similar consecutive rolls in parentheses
     bool in = false;
     for(int i = 0; i < n; i++) {
@@ -61,12 +61,13 @@ int main() {
     Log::defaultLogger();
     Log::debug("Debug messages are enabled");
 
-    int arr[20];
-    generateTosses(arr, 20); // generate tosses
+    const int size = 20;
+    int arr[size];
+    generateTosses(arr, size); // generate tosses
     
-    Log::debug("Array: " + UtilString::arrAsToString(arr, 20));
+    Log::debug("Array: " + UtilString::arrAsToString(arr, size));
 
-    print_with_runs(arr, 20); // print
+    print_with_runs(arr, size); // print
 
     return 0;
     
