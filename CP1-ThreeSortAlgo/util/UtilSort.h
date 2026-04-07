@@ -7,7 +7,7 @@ namespace UtilSort {
         for(int i = 1; i < size; i++) {
         T key = arr[i];
         int j = i - 1;
-        while(j >=0 && conditonal(arr[j], key)) { // should prev be shifted forward one
+        while(j >=0 && conditonal(key, arr[j])) { // should prev be shifted forward one
             arr[j + 1] = arr[j];
             j--;
         }
@@ -17,7 +17,7 @@ namespace UtilSort {
     template <typename T>
     void selectionSort(T* arr, const int size, const std::function<bool(T& key, T& against)> conditional) {
         for(int i = 0; i < size -1; i++) {
-            T swapPos = i;
+            int swapPos = i;
             for(int j = i + 1; j < size; j++) {
                 if(conditional(arr[j], arr[swapPos])) {
                     swapPos = j; // Should key swap with against? Against will be the lowest condition by the end of loop
@@ -35,7 +35,7 @@ namespace UtilSort {
         for(int i = 0; i < size - 1; i++) {
             for(int j = 0; j < size - i -1; j++) {
                 if(conditional(arr[j], arr[j + 1])) { // Should swap current with next?
-                    int temp = arr[j];
+                    T temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
                 }
@@ -54,13 +54,13 @@ namespace UtilSort {
         template <typename T>
         void ltgInsertionSort(T* arr, const int size) {
             return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
-                return key > prev;
+                return key < prev;
             }));
         }
         template <typename T>
         void gtlInsertionSort(T* arr, const int size) {
             return UtilSort::insertionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& prev) {
-                return key < prev;
+                return key > prev;
             }));
         }
         template <typename T>
