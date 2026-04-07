@@ -66,13 +66,13 @@ namespace UtilSort {
         template <typename T>
         void ltgSelectionSort(T* arr, const int size) {
             return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
-                return key > against;
+                return against > key;
             }));
         }
         template <typename T>
         void gtlSelectionSort(T* arr, const int size) {
             return UtilSort::selectionSort(arr, size, std::function<bool(T&, T&)>([](T& key, T& against) {
-                return key < against;
+                return against < key;
             }));
         }
         template <typename T>
