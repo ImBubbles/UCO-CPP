@@ -7,7 +7,7 @@
 namespace UtilString {
     std::string precisionDouble(double db, int precision);
     std::vector<std::string> split(const std::string& str, const char regex);
-    std::string addrString(void*);
+    std::string addrString(const void*);
     std::string padString(int width, const std::string& original, char padding);
     std::string rightString(int width, const std::string& original, char padding);
     template <typename T>

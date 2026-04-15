@@ -27,7 +27,7 @@ std::vector<std::string> UtilString::split(const std::string& str, const char re
     return result;
 }
 
-std::string UtilString::addrString(void* ptr) {
+std::string UtilString::addrString(const void* ptr) {
     std::stringstream ss;
     ss << ptr;
     return ss.str();
