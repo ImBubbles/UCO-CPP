@@ -22,23 +22,30 @@ int main() {
 
     // Init studentmanager (to keep track of pointers + deleting)
     StudentManager sm;
+    Log::debug("Creating students");
     Student* hayden = sm.addStudent("Hayden");
     Student* brody = sm.addStudent("Brody");
     Student* carter = sm.addStudent("Carter");
     Student* joel = sm.addStudent("Joel");
+    Log::debug("students create");
 
     // Init coursemanager (to keep track of pointers + deleting)
     CourseManager cm;
+    Log::debug("Creating courses");
     Course* math = cm.addCourse("Math");
     Course* english = cm.addCourse("English");
     Course* science = cm.addCourse("Science");
+    Log::debug("Courses created");
 
     // Enroll students into classes
+    Log::debug("Enrolling");
     math->enroll(hayden)->enroll(brody)->enroll(joel);
     english->enroll(brody)->enroll(joel)->enroll(carter);
     science->enroll(carter)->enroll(hayden);
+    Log::debug("Enrolled");
 
     // Print students first
+    Log::debug("Printing students");
     std::cout << "Students:" << std::endl;
     for(Student* student : sm.getStudents()) {
         student->printStudent();
@@ -46,6 +53,7 @@ int main() {
     }
     std::cout << std::endl;
     // Print courses now
+    Log::debug("Printing courses");
     std::cout << "Courses:" << std::endl;
     for(Course* course : cm.getCourses()) {
         course->printCourse();

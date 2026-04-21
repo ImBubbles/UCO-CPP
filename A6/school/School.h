@@ -6,12 +6,14 @@ namespace School {
     class Student;
     class Course {
         std::vector<Student*> students;
+        std::string name;
         public:
-        const std::string name;
         Course(const std::string& name) : name(name) {}
+        const std::string& getName() const;
+        void setName(const std::string& name);
         Course* enroll(Student* s);
-        bool contains(Student* student);
-        void printCourse();
+        bool contains(Student* student) const;
+        void printCourse() const;
     };
     class CourseManager {
         std::vector<Course*> courses;
@@ -34,13 +36,15 @@ namespace School {
     };
     class Student {
         std::vector<Course*> courses; // Should be considered more of a cache than true bidirectional ownership because it's unsafe to do so
+        std::string name;
         public:
-        const std::string name;
         Student(const std::string& name) : name(name) {}
+        const std::string& getName() const;
+        void setName(const std::string& name);
         void updateAllCourses(CourseManager& cm);
         bool addCourse(Course* c);
         bool removeCourse(Course* c);
-        void printStudent();
+        void printStudent() const;
     };
     class StudentManager {
         std::vector<Student*> students;

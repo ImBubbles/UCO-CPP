@@ -5,7 +5,6 @@
 class Tokenizer {
     std::vector<const char*> dictionary; // unique words
     std::vector<std::size_t> document; // all words
-
 public:
     Tokenizer() {}
     Tokenizer(const Tokenizer&) = delete; // disable copy construction

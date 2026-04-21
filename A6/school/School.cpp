@@ -7,20 +7,26 @@
 using namespace School;
 
 // Course
+const std::string& Course::getName() const {
+    return this->name;
+}
+void Course::setName(const std::string& name) {
+    this->name = name;
+}
 Course* Course::enroll(Student* s) {
     this->students.push_back(s);
     s->addCourse(this);
     return this;
 }
-bool Course::contains(Student* student) {
+bool Course::contains(Student* student) const {
     return UtilVector::contains(students, student);
 }
-void Course::printCourse() {
+void Course::printCourse() const {
     std::cout << "Course Name: " << this->name << std::endl;
     std::cout
     << "Students: "
     << UtilString::vectorAsStringFunc(
-        students, std::function<std::string(Student*&)>([](Student*& s) { return s->name; })
+        students, std::function<std::string(Student*&)>([](Student*& s) { return s->getName(); })
     )
     << std::endl;
 }
@@ -50,6 +56,12 @@ const std::vector<Course*>& CourseManager::getCourses() {
 }
 
 // Student
+const std::string& Student::getName() const {
+    return this->name;
+}
+void Student::setName(const std::string& name) {
+    this->name = name;
+}
 void Student::updateAllCourses(CourseManager& cm) {
     courses = cm.getCoursesOfStudent(this);
 }
@@ -63,12 +75,12 @@ bool Student::addCourse(Course* c) {
 bool Student::removeCourse(Course* c) {
     return UtilVector::removeElement(courses, c);
 }
-void Student::printStudent() {
+void Student::printStudent() const {
     std::cout << "Student Name: " << this->name << std::endl;
     std::cout
     << "Courses: "
     << UtilString::vectorAsStringFunc(
-        courses, std::function<std::string(Course*&)>([](Course*& c) { return c->name; })
+        courses, std::function<std::string(Course*&)>([](Course*& c) { return c->getName(); })
     )
     << std::endl;
 }

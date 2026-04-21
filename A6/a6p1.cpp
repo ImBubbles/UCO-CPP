@@ -39,6 +39,11 @@ int main() {
         Log::info("Tokenized " + word + " with address " + UtilString::addrString(ptr));
     }
 
+    // If you wanted to print all words after tokenized
+    /*for(const char* ptr : tokenizer.normalize()) {
+        Log::info("Tokenized " + std::string(ptr) + " with address " + UtilString::addrString(ptr));
+    }*/
+
     return 0;
     
 }
