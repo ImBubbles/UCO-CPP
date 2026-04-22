@@ -1,0 +1,1 @@
+You need to know parts 1-4, part 5+ is more advanced not required for the class
