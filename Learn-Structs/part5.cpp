@@ -1,4 +1,7 @@
 #include <iostream>
+// Feel free to skip this part.
+// This is just some extra information that is good to know and you should know but maybe not yet
+
 // using const in a class
 
 // without knowing exactly how to use const in classes/structs, it can be confusing to read
