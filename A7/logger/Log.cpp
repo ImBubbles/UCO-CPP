@@ -4,13 +4,28 @@
 
 int Log::LOG_FILTER = 0;
 
-void Log::log(const int& level, const std::string& message) {
+void Log::nl() {
+	if(Log::logger == nullptr) {
+		return;
+	}
+	Log::logger->nl();
+}
+void Log::nl(const int level) {
+	if(level < Log::LOG_FILTER) {
+		return;
+	}
+	if(Log::logger == nullptr) {
+		return;
+	}
+	nl();
+}
+void Log::log(const int level, const std::string& message, const bool nl) {
 	if (level < Log::LOG_FILTER)
 		return;
 	if (Log::logger == nullptr) {
 		return;
 	}
-	Log::logger->log(level, message);
+	Log::logger->log(level, message, nl);
 }
 
 void Log::defaultLogger() {

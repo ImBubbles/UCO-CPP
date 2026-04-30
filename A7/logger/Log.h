@@ -16,17 +16,22 @@ public:
 
 	Log() = delete;
 
-	static void log(const int& level, const std::string& message);
-	static void debug(const std::string &message) {
+	static void nl(); // newLine
+	static void nl(const int level); // newLine if level
+	static void log(const int level, const std::string& message, const bool nl);
+	static void log(const int level, const std::string& message) {
+		log(level, message, true);
+	}
+	static void debug(const std::string& message) {
 		log(LogLevel::DEBUG, message);
 	}
-	static void info(const std::string &message) {
+	static void info(const std::string& message) {
 		log(LogLevel::INFO, message);
 	}
-	static void warning(const std::string &message) {
+	static void warning(const std::string& message) {
 		log(LogLevel::WARNING, message);
 	}
-	static void error(const std::string &message) {
+	static void error(const std::string& message) {
 		log(LogLevel::ERROR, message);
 	}
 	static void setLogger(std::unique_ptr<Logger> ref) {

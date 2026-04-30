@@ -1,0 +1,2 @@
+Hello, my name is Hayden
+This also works for multi lines files!

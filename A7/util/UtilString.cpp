@@ -1,8 +1,18 @@
+#include <cctype>
 #include <cstddef>
 #include <iomanip>
+#include <ios>
 #include <sstream>
 #include <string>
 #include "UtilString.h"
+
+std::string UtilString::asUppercase(const std::string& str) {
+    std::string result;
+    for(const char c : str) {
+        result += std::toupper(c);
+    }
+    return result;
+}
 
 std::string UtilString::precisionDouble(double db, int precision) {
     std::ostringstream oss;

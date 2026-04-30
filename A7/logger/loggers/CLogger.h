@@ -15,8 +15,19 @@ namespace ANSI {
 }
 
 class CLogger : public Logger {
-    void log(const int& level, const std::string& message) override {
-        std::cout << getLevelPrefix(level) << " " << message << ANSI::RESET << std::endl;
+    void nl() override {
+        std::cout << ANSI::RESET << std::endl;
+        prefixNext = true;
+    }
+    void log(const int level, const std::string& message, const bool nl) override {
+        if(prefixNext) {
+            std::cout << getLevelPrefix(level) << " ";
+        }
+        std::cout << message;
+        prefixNext = false;
+        if(nl) {
+            this->nl();
+        }
     }
     const std::string getLevelPrefix(const int logLevel) override {
         switch (logLevel) {

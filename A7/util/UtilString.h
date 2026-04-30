@@ -5,6 +5,7 @@
 #include <functional>
 
 namespace UtilString {
+    std::string asUppercase(const std::string&);
     std::string precisionDouble(double db, int precision);
     std::vector<std::string> split(const std::string& str, const char regex);
     std::string addrString(const void*);

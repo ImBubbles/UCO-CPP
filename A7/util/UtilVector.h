@@ -13,6 +13,15 @@ namespace UtilVector {
         return false;
     }
     template<typename T>
+    bool containsPrim(const T*& v, const std::size_t size, const T& against) {
+        for(std::size_t i = 0; i < size; ++i) {
+            if(v[i] == against) {
+                return true;
+            }
+        }
+        return false;
+    }
+    template<typename T>
     std::size_t binarySearch(const std::vector<T>& v, const T& element) {
         std::size_t left = 0;
         std::size_t right = v.size();

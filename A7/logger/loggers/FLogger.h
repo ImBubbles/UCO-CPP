@@ -10,8 +10,19 @@ private:
     std::ofstream file;
 public:
 
-    FLogger(const std::string& fileName) : file(fileName, std::ios::out) {}
-    void log(const int& level, const std::string& message) override {
-        file << getLevelPrefix(level) << " " << message << std::endl;
+    FLogger(const std::string& fileName) : file(fileName, std::ios::out) {} // will close upon deletion by default
+    void nl() override {
+        file << std::endl;
+        prefixNext = true;
+    }
+    void log(const int level, const std::string& message, const bool nl) override {
+        if(prefixNext) {
+            file << getLevelPrefix(level) << " ";
+        }
+        file << message;
+        prefixNext = false;
+        if(nl) {
+            this->nl();
+        }
     }
 };
