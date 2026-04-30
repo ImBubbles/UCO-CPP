@@ -13,5 +13,5 @@ int main() {
 // Remember, to compile this so it works, you have to do this
 
 // (for g++, clang is very similar though and for this should be interchangable)
-// g++ part7main.cpp part7student.cpp -o output.exe
+// g++ part7.cpp part7student.cpp -o output.exe
 // the -o just means the file you run is titled "output.exe"
