@@ -9,6 +9,7 @@
 */
 #include <string>
 #include <vector>
+#include <fstream>
 #include "logger/Log.h"
 #include "util/UtilString.h"
 
@@ -38,7 +39,7 @@ std::vector<std::string> rawToRows(const std::string& raw) {
         char c = raw[i];
 
         if (inQuotes) {
-            if (c == '"') {
+            if (c == '\"') {
                 // escaped quote?
                 if (i + 1 < raw.size() && raw[i + 1] == '"') {
                     current += '"';
@@ -50,7 +51,7 @@ std::vector<std::string> rawToRows(const std::string& raw) {
                 current += c;
             }
         } else {
-            if (c == '"') {
+            if (c == '\"') {
                 inQuotes = true;
             } else if (c == ',') {
                 result.push_back(unescapeCsvField(current));
@@ -96,7 +97,7 @@ std::string field(const std::string& row, int column) {
         char c = row[i];
 
         if (inQuotes) {
-            if (c == '"') {
+            if (c == '\"') {
                 if (i + 1 < row.size() && row[i + 1] == '"') {
                     current += '"';
                     ++i; // skip escape
@@ -107,7 +108,7 @@ std::string field(const std::string& row, int column) {
                 current += c;
             }
         } else {
-            if (c == '"') {
+            if (c == '\"') {
                 inQuotes = true;
             } else if (c == ',') {
                 if (currentColumn == column) {
@@ -130,10 +131,20 @@ int main(int argc, char* argv[]) {
     Log::defaultLogger();
     Log::debug("Debug messages are enabled");
 
-    std::string test = "1729,San Francisco, \"Hello, World, \"\"Raw, Power\"\"\", \"He asked: \"\"Quo vadis\"\"\"";
-    std::string testEasy = "1729, \"test\", wow, this, is cool";
-    std::vector<std::string> rows = rawToRows(test);
-    std::cout << UtilString::vectorAsString(rows) << std::endl;;
+    std::ifstream file("csv.txt", std::ios::in);
+    if(!file) {
+        Log::error("Could not open csv.txt");
+        exit(1);
+    }
+    std::string content;
+    std::getline(file, content);
+
+    //std::string test = "1729,San Francisco, \"Hello, World, \"\"Raw, Power\"\"\", \"He asked: \"\"Quo vadis\"\"\"";
+    //std::string testEasy = "1729, \"test\", wow, this, is cool";
+    std::vector<std::string> rows = rawToRows(content);
+    //std::cout << UtilString::vectorAsString(rows) << std::endl;;
+    std::cout << "Num of rows " << numberOfFields(rows.at(2)) << std::endl;
+    std::cout << "Field 2 of the third element" << field(rows.at(2), 1) << std::endl;
     
     return 0;
     
