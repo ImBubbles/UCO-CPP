@@ -17,7 +17,7 @@ private: // you can switch back to private/public as many times as you want
 
 void example() {
     Person myPerson;
-    // Here's some examples of valid and invalid code
+    //// Here's some examples of valid and invalid code
     myPerson.funnyNumber = 80; // Valid because funnyNumber is public
     //myPerson.age = 19 // Not valid because age is private (though not explicity said private:, classes start as private)
     //myPerson.otherNumber = 100; // Not valid because it is private

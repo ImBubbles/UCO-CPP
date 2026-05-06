@@ -51,5 +51,7 @@ int main() {
     c1.count(2); // also works but with different functionality now
     std::cout << c1.getValue() << std::endl; // prints 8
 
+    delete c3; // good practice
+
     return 0;
 }

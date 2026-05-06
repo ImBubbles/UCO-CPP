@@ -1,3 +1,7 @@
+// This is the main file for part6
+// If you want to just see the code an understand, honestly just skip to part7, this is a more in-depth lesson
+
+
 // You may notice there is also a part6.h for this
 // Both of these files are used typically to create classes
 

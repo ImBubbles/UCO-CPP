@@ -1,4 +1,4 @@
-// This is the main reference file for part7, you can look at part7student.cpp and part7student.h if you would like
+// This is the main reference file for part7, you should also look at part7student.cpp and part7student.h
 // This is just to show what it looks like when you keep the .cpp and .h for a class different than the main file
 
 #include "part7student.h"
