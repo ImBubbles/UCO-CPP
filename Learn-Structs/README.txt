@@ -12,3 +12,4 @@ Part 4: Overloading functions
 Part 5: const vs const
 Part 6: .h and .cpp
 Part 7: .h and .cpp continued
+Part 8: Using references as a return type in classes/structs
